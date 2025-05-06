@@ -1,0 +1,787 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="如何更新 Hexo 博客并部署到 GitHub Pages作为一名 Hexo 博客用户，我经常需要添加新文章或修改内容，并将更新部署到 GitHub Pages。最近，我整理了一套简单的流程，用于更新我的博客（托管在 https:&#x2F;&#x2F;magician-jackson.github.io）。这篇教程分享如何在本地编辑内容、预览效果，并部署到 GitHub Pages，适合初学者和有一定经验的用户。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何更新 Hexo 博客并部署到 GitHub Pages">
+<meta property="og:url" content="http://example.com/2025/05/06/%E6%9B%B4%E6%96%B0%20Hexo%20%E5%8D%9A%E5%AE%A2%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0%20GitHub%20Pages/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="如何更新 Hexo 博客并部署到 GitHub Pages作为一名 Hexo 博客用户，我经常需要添加新文章或修改内容，并将更新部署到 GitHub Pages。最近，我整理了一套简单的流程，用于更新我的博客（托管在 https:&#x2F;&#x2F;magician-jackson.github.io）。这篇教程分享如何在本地编辑内容、预览效果，并部署到 GitHub Pages，适合初学者和有一定经验的用户。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-06T10:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-06T07:28:26.522Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="GitHub Pages">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>如何更新 Hexo 博客并部署到 GitHub Pages - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>不为谁而作的哥</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>类别</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>我的</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="如何更新 Hexo 博客并部署到 GitHub Pages"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-06 18:00" pubdate>
+          May 6, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">如何更新 Hexo 博客并部署到 GitHub Pages</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="如何更新-Hexo-博客并部署到-GitHub-Pages"><a href="#如何更新-Hexo-博客并部署到-GitHub-Pages" class="headerlink" title="如何更新 Hexo 博客并部署到 GitHub Pages"></a>如何更新 Hexo 博客并部署到 GitHub Pages</h1><p>作为一名 Hexo 博客用户，我经常需要添加新文章或修改内容，并将更新部署到 GitHub Pages。最近，我整理了一套简单的流程，用于更新我的博客（托管在 <code>https://magician-jackson.github.io</code>）。这篇教程分享如何在本地编辑内容、预览效果，并部署到 GitHub Pages，适合初学者和有一定经验的用户。</p>
+<h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><ul>
+<li>你已有一个 Hexo 项目（例如 <code>~/myblog</code>），并通过 <code>hexo server</code> 本地测试正常。</li>
+<li>博客托管在 GitHub Pages（例如 <code>https://github.com/magician-jackson/magician-jackson.github.io</code>）。</li>
+<li>已安装 <code>hexo-cli</code> 和 <code>hexo-deployer-git</code>。</li>
+<li>本地环境：Node.js、npm 和 Git 已配置。</li>
+</ul>
+<h2 id="步骤概览"><a href="#步骤概览" class="headerlink" title="步骤概览"></a>步骤概览</h2><ol>
+<li>添加或修改文章内容。</li>
+<li>本地预览更新。</li>
+<li>配置部署设置。</li>
+<li>部署到 GitHub Pages。</li>
+<li>验证网站更新。</li>
+</ol>
+<p>下面是详细步骤。</p>
+<hr>
+<h2 id="1-添加或修改文章内容"><a href="#1-添加或修改文章内容" class="headerlink" title="1. 添加或修改文章内容"></a>1. 添加或修改文章内容</h2><h3 id="添加新文章"><a href="#添加新文章" class="headerlink" title="添加新文章"></a>添加新文章</h3><p>在 Hexo 项目目录（例如 <code>~/myblog</code>）中运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/myblog<br>hexo new <span class="hljs-string">&quot;我的新文章&quot;</span><br></code></pre></td></tr></table></figure>
+<p>这会在 <code>source/_posts/</code> 生成一个 Markdown 文件（例如 <code>我的新文章.md</code>），默认内容如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 我的新文章<br>date: 2025-05-06 17:00:00<br>categories:<br><span class="hljs-bullet">  -</span> 技术<br>tags:<br><span class="hljs-section">  - 博客</span><br><span class="hljs-section">---</span><br>这是我的新文章内容。<br></code></pre></td></tr></table></figure>
+
+<p>你可以编辑文件，添加更多内容。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano <span class="hljs-built_in">source</span>/_posts/我的新文章.md<br></code></pre></td></tr></table></figure>
+<p>修改为：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 我的新文章<br>date: 2025-05-06 17:00:00<br>categories:<br><span class="hljs-bullet">  -</span> 技术<br>tags:<br><span class="hljs-section">  - 博客</span><br><span class="hljs-section">---</span><br><span class="hljs-section"># 欢迎体验我的博客</span><br>这是一篇新文章，测试更新到 GitHub Pages。<br><br>![<span class="hljs-string">图片</span>](<span class="hljs-link">/images/my-image.jpg</span>)<br></code></pre></td></tr></table></figure>
+<p>保存退出（<code>Ctrl+O</code>，<code>Enter</code>，<code>Ctrl+X</code>）。</p>
+<h3 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h3><p>如果文章包含图片：</p>
+<ul>
+<li>创建 <code>source/images/</code> 目录：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> <span class="hljs-built_in">source</span>/images<br></code></pre></td></tr></table></figure></li>
+<li>将图片（例如 <code>my-image.jpg</code>）放入 <code>source/images/</code>。</li>
+<li>在文章中引用路径：<code>![图片](/images/my-image.jpg)</code>。</li>
+</ul>
+<h3 id="修改现有文章"><a href="#修改现有文章" class="headerlink" title="修改现有文章"></a>修改现有文章</h3><p>查看已有文章：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -la <span class="hljs-built_in">source</span>/_posts/<br></code></pre></td></tr></table></figure>
+<p>编辑目标文章：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano <span class="hljs-built_in">source</span>/_posts/目标文章.md<br></code></pre></td></tr></table></figure>
+<p>修改标题、正文、分类或标签，保存。</p>
+<hr>
+<h2 id="2-本地预览更新"><a href="#2-本地预览更新" class="headerlink" title="2. 本地预览更新"></a>2. 本地预览更新</h2><p>在部署前，建议预览内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo server<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>hexo clean</code>：清除旧缓存。</li>
+<li><code>hexo generate</code>：生成静态文件到 <code>public/</code>。</li>
+<li><code>hexo server</code>：启动本地服务器。</li>
+</ul>
+<p>访问 <code>http://localhost:4000</code>，检查：</p>
+<ul>
+<li>新文章或修改是否显示。</li>
+<li>图片和样式是否正常。</li>
+</ul>
+<p>如果端口 4000 被占用，尝试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo server -p 4001<br></code></pre></td></tr></table></figure>
+<p>访问 <code>http://localhost:4001</code>。</p>
+<hr>
+<h2 id="3-配置部署设置"><a href="#3-配置部署设置" class="headerlink" title="3. 配置部署设置"></a>3. 配置部署设置</h2><h3 id="检查-config-yml"><a href="#检查-config-yml" class="headerlink" title="检查 _config.yml"></a>检查 _config.yml</h3><p>确保 <code>~/myblog/_config.yml</code> 的部署配置正确：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">git@github.com:magician-jackson/magician-jackson.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>repo</code>：推荐使用 SSH 地址（<code>git@github.com:...</code>）。</li>
+<li><code>branch</code>：与 GitHub Pages 分支一致（通常为 <code>main</code>）。</li>
+</ul>
+<h3 id="安装部署插件"><a href="#安装部署插件" class="headerlink" title="安装部署插件"></a>安装部署插件</h3><p>确认 <code>hexo-deployer-git</code> 已安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm list hexo-deployer-git<br></code></pre></td></tr></table></figure>
+<p>如果未安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-验证-GitHub-认证"><a href="#4-验证-GitHub-认证" class="headerlink" title="4. 验证 GitHub 认证"></a>4. 验证 GitHub 认证</h2><p>确保可以通过 SSH 推送内容：</p>
+<ol>
+<li>检查 SSH 密钥：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -la ~/.ssh/<br></code></pre></td></tr></table></figure>
+确认存在 <code>id_rsa</code> 和 <code>id_rsa.pub</code>。</li>
+<li>测试 SSH 连接：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
+成功输出：<code>Hi magician-jackson! You&#39;ve successfully authenticated</code>。</li>
+<li>如果失败，生成并添加 SSH 密钥：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br><span class="hljs-built_in">cat</span> ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure>
+将公钥添加到 GitHub（Settings &gt; SSH and GPG keys &gt; New SSH key）。</li>
+</ol>
+<p><strong>HTTPS 替代</strong>：<br>如果不想用 SSH，修改 <code>_config.yml</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/magician-jackson/magician-jackson.github.io.git</span><br></code></pre></td></tr></table></figure>
+<p>部署时需输入 GitHub 用户名和个人访问令牌（PAT，生成于 GitHub &gt; Settings &gt; Developer settings &gt; Personal access tokens，勾选 <code>repo</code>）。</p>
+<hr>
+<h2 id="5-部署到-GitHub-Pages"><a href="#5-部署到-GitHub-Pages" class="headerlink" title="5. 部署到 GitHub Pages"></a>5. 部署到 GitHub Pages</h2><p>运行部署命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo deploy<br></code></pre></td></tr></table></figure>
+<ul>
+<li>成功后，终端显示：<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">INFO</span>  Deploying: git<br><span class="hljs-built_in">..</span>.<br><span class="hljs-built_in">INFO</span>  Deploy done: git<br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="6-验证网站更新"><a href="#6-验证网站更新" class="headerlink" title="6. 验证网站更新"></a>6. 验证网站更新</h2><ul>
+<li>等待 1-2 分钟（GitHub Pages 构建可能有延迟）。</li>
+<li>访问 <code>https://magician-jackson.github.io</code>，确认新文章、图片和样式正常。</li>
+<li>如果未更新：<ul>
+<li>检查 GitHub 仓库是否收到提交：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git ls-remote git@github.com:magician-jackson/magician-jackson.github.io.git<br></code></pre></td></tr></table></figure></li>
+<li>查看 GitHub Pages 状态（Settings &gt; Pages &gt; Environments &gt; github-pages）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="常见问题及解决方法"><a href="#常见问题及解决方法" class="headerlink" title="常见问题及解决方法"></a>常见问题及解决方法</h2><ol>
+<li><p><strong>部署失败</strong>：</p>
+<ul>
+<li>检查 <code>hexo deploy</code> 错误信息。</li>
+<li>验证 SSH：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure></li>
+<li>确保 <code>_config.yml</code> 的 <code>deploy</code> 配置正确。</li>
+</ul>
+</li>
+<li><p><strong>页面未更新</strong>：</p>
+<ul>
+<li>确认 <code>public/</code> 包含最新文件：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -la public/<br></code></pre></td></tr></table></figure></li>
+<li>强制部署：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo deploy --force<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>样式丢失</strong>：</p>
+<ul>
+<li>检查 <code>_config.yml</code> 的 <code>theme</code> 设置：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> _config.yml | grep theme<br></code></pre></td></tr></table></figure></li>
+<li>确认 <code>themes/你的主题/_config.yml</code> 无误。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="示例操作"><a href="#示例操作" class="headerlink" title="示例操作"></a>示例操作</h2><ol>
+<li><p>添加新文章：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/myblog<br>hexo new <span class="hljs-string">&quot;更新测试文章&quot;</span><br>nano <span class="hljs-built_in">source</span>/_posts/更新测试文章.md<br></code></pre></td></tr></table></figure>
+<p>编辑：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 更新测试文章<br>date: 2025-05-06 17:00:00<br>categories:<br><span class="hljs-bullet">  -</span> 测试<br>tags:<br><span class="hljs-section">  - 博客</span><br><span class="hljs-section">---</span><br>这是一篇测试更新到 GitHub 的文章。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>预览：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo server<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>部署：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean<br>hexo generate<br>hexo deploy<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>访问 <code>https://magician-jackson.github.io</code> 检查更新。</p>
+</li>
+</ol>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过以上步骤，你可以轻松更新 Hexo 博客并部署到 GitHub Pages。每次更新后，记得本地预览以确保内容正确。如果遇到问题（如部署失败或样式异常），可以检查配置或查看 Hexo 官方文档（<a target="_blank" rel="noopener" href="https://hexo.io/docs/%EF%BC%89%E3%80%82%E5%B8%8C%E6%9C%9B%E8%BF%99%E7%AF%87%E6%95%99%E7%A8%8B%E5%AF%B9%E4%BD%A0%E7%AE%A1%E7%90%86%E5%8D%9A%E5%AE%A2%E6%9C%89%E6%89%80%E5%B8%AE%E5%8A%A9%EF%BC%81">https://hexo.io/docs/）。希望这篇教程对你管理博客有所帮助！</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
+      
+        <a href="/tags/GitHub-Pages/" class="print-no-link">#GitHub Pages</a>
+      
+        <a href="/tags/%E5%8D%9A%E5%AE%A2/" class="print-no-link">#博客</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>如何更新 Hexo 博客并部署到 GitHub Pages</div>
+      <div>http://example.com/2025/05/06/更新 Hexo 博客并部署到 GitHub Pages/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 6, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/05/06/C++%E5%85%A8%E9%9D%A2%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" title="C/C++ 全面学习路线">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C/C++ 全面学习路线</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/04/WiFi8%E9%AB%98%E4%BD%8E%E9%A2%91%E6%8E%A5%E5%85%A5%E6%B5%81%E7%A8%8B/" title="WiFi8高低频接入流程">
+                        <span class="hidden-mobile">WiFi8高低频接入流程</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/magician-Jackson" target="_blank" rel="nofollow noopener"><span>我</span></a> <i class="iconfont icon-love"></i> <a href="https://space.bilibili.com/169322798" target="_blank" rel="nofollow noopener"><span>生活</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
