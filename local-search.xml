@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>我的新文章</title>
+    <link href="/2025/05/06/%E6%88%91%E7%9A%84%E6%96%B0%E6%96%87%E7%AB%A0/"/>
+    <url>/2025/05/06/%E6%88%91%E7%9A%84%E6%96%B0%E6%96%87%E7%AB%A0/</url>
+    
+    <content type="html"><![CDATA[<p>这是我的新文章内容。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>博客</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>WiFi8高低频接入流程</title>
     <link href="/2025/03/04/WiFi8%E9%AB%98%E4%BD%8E%E9%A2%91%E6%8E%A5%E5%85%A5%E6%B5%81%E7%A8%8B/"/>
     <url>/2025/03/04/WiFi8%E9%AB%98%E4%BD%8E%E9%A2%91%E6%8E%A5%E5%85%A5%E6%B5%81%E7%A8%8B/</url>
